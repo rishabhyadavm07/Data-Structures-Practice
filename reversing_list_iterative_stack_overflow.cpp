@@ -6,7 +6,7 @@
 using namespace std;
 struct node{
     int data;
-    struct node* next;
+    struct node* link;
 };
 struct node* head;
 
@@ -16,7 +16,7 @@ void insert(int data){
     {    
         node* temp = new node();
         temp->data = data;
-        temp->next = nullptr;
+        temp->link = nullptr;
         // CHANGE HERE: removed unnecessary while loop
         // Directly assign temp to head
         head = temp;
@@ -25,25 +25,39 @@ void insert(int data){
     {
         node* temp = new node();
         temp->data=data;
-        temp->next=nullptr;
-        // CHANGE HERE: check for temphead->next instead of temphead
-        while (temphead->next != nullptr)
+        temp->link=nullptr;
+        // CHANGE HERE: check for temphead->link instead of temphead
+        while (temphead->link != nullptr)
         {
-            // CHANGE HERE: remove unnecessary line: temphead->next= temp;
-            temphead=temphead->next;
+            // CHANGE HERE: remove unnecessary line: temphead->link= temp;
+            temphead=temphead->link;
         }
-        // CHANGE HERE: assign temp to temphead->next (i.e. to last node)
-        temphead->next = temp;
+        // CHANGE HERE: assign temp to temphead->link (i.e. to last node)
+        temphead->link = temp;
     }
+}
+
+void reverse(){
+    struct node *current,*priv,*next;
+    current = head;
+    priv=NULL;
+    while (current != NULL)
+    {
+        next= current->link;
+        current->link=priv;
+        priv= current;
+        current = next;
+    }
+    head = priv;
 }
 
 void print(){
     struct node* tempptr = head;
-    // CHANGE HERE: check for tempptr instead of tempptr->next
+    // CHANGE HERE: check for tempptr instead of tempptr->link
     while (tempptr != nullptr)
     {
         cout<<tempptr->data<<"_";
-        tempptr=tempptr->next;
+        tempptr=tempptr->link;
     }
     
 }
@@ -56,6 +70,10 @@ int main(){
     insert(8);
     insert(6);
     //list - 2_4_8_6
+    print();
+    cout<<endl;
+    reverse();
+    cout<<endl;
     print();
     return 0;
 }
