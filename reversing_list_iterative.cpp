@@ -75,3 +75,4 @@ int main(){
     print();
     return 0;
 }
+//the reverse traversing has been implemented in the stack_overflow file with the same name in this repository.
