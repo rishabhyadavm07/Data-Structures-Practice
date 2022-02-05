@@ -146,6 +146,9 @@ int max(bstnode* root){
 }
 
 
+
+
+
 void searchrez(bool a){
     if (a == 1)
     {
