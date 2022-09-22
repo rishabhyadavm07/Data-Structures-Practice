@@ -2,34 +2,16 @@
 #include<string>
 #include<vector>
 using namespace std;
-string reverseString(string s){
-    string temp = s;
-    int start = 0;
-    int end = s.length()-1;
-    while (start<end)
-    {
-        swap(temp[start], temp[end]);
-        start++;
-        end--;
-    }
-    
-    cout<<"temp is : "<<temp<<endl;
-    return temp;
-}
 void reversePrint(string s){
     string str;
     vector<string> temp;
-    string str2;
 
     for (int i = 0; i < s.length(); i++)
     {
         if (s[i] == ' ')
         {
-            
-            str2 = reverseString(str);
-            temp.push_back(str2);
+            temp.push_back(str);
             str = "";
-            str2 = "";
         }
         else
         {
@@ -38,7 +20,7 @@ void reversePrint(string s){
         
         
     }
-    temp.push_back(reverseString(str));
+    temp.push_back(str);
     cout<<"Temp size is : "<<temp.size()<<endl;
     // cout<<temp[1];
     for (int j = temp.size()-1; j >= 0; j--)
@@ -57,10 +39,6 @@ int main()
     mystr = "my name is rishabh";
     cout<<"string is :"<<mystr<<endl;
     reversePrint(mystr);
-    // string test = "rishabh";
-    // cout<<test[4]<<endl;
-    // string go = reverseString(test);
-    // cout<<"Reversed string is : "<<go<<endl;
     
     
     
